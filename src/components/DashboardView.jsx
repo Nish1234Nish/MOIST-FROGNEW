@@ -8,7 +8,7 @@ import FrogHeader from "../components/FrogHeader";
 //
 function EmailSetupCard() {
   return (
-    <div className="bg-white p-5 rounded-xl shadow border border-gray-200 mb-6">
+    <div className="bg-white p-5 rounded-xl shadow border border-gray-200 mt-10">
       <h2 className="text-xl font-bold text-frog-900 mb-2">
         🐸 Moist Frog Email Setup Guide
       </h2>
@@ -23,8 +23,8 @@ function EmailSetupCard() {
         <li>Create an account at <strong>EmailJS</strong>.</li>
 
         <li>
-          Make a new <strong>Email Service</strong> (Gmail / Outlook / SMTP)
-          and copy the <strong>Service ID</strong>.
+          Make a new <strong>Email Service</strong> and copy the
+          <strong> Service ID</strong>.
         </li>
 
         <li>
@@ -36,7 +36,7 @@ function EmailSetupCard() {
           (No formatting or extra fields needed.)
         </li>
 
-        <li>Save the template and copy the <strong>Template ID</strong>.</li>
+        <li>Copy the <strong>Template ID</strong>.</li>
 
         <li>
           Go to <strong>Account → API Keys</strong> and copy your
@@ -44,17 +44,17 @@ function EmailSetupCard() {
         </li>
 
         <li>
-          Enter all three values in the <strong>Settings</strong> tab along with your
+          Enter all values in the <strong>Settings</strong> tab along with your
           email address.
         </li>
 
-        <li>Use <strong>Send Test Email</strong> to confirm everything works.</li>
+        <li>Use <strong>Send Test Email</strong> to confirm setup.</li>
       </ol>
 
       <p className="text-gray-700 italic">
         Moist Frog will now automatically send Daily Digests at
         <strong> 8 AM</strong> and Weekly Summaries every
-        <strong> Monday at 8 AM</strong>. No backend required.
+        <strong> Monday at 8 AM</strong>.
       </p>
     </div>
   );
@@ -62,19 +62,23 @@ function EmailSetupCard() {
 
 //
 // ───────────────────────────────────────────────
-// MAIN DASHBOARD VIEW COMPONENT
+// MAIN DASHBOARD COMPONENT
 // ───────────────────────────────────────────────
 //
 export default function DashboardView({
   frogName,
   tagline,
   stats,
-  reminders,
-  interviews,
-  ...props
+  onAddApplication,
+  onAddResearch,
 }) {
-  // Prevent crash if stats is undefined
-  stats = stats || { active: 0, interviews: 0, actions: 0 };
+  // Prevent crashes if stats missing
+  stats = stats || {
+    active: 0,
+    interviews: 0,
+    research: 0,
+    actions: 0,
+  };
 
   return (
     <div className="p-6">
@@ -82,17 +86,11 @@ export default function DashboardView({
       {/* Header */}
       <FrogHeader frogName={frogName} tagline={tagline} />
 
-      {/* Email Setup Card */}
-      <div className="mt-4">
-        <EmailSetupCard />
-      </div>
+      {/* ─────────────────────────────── */}
+      {/* METRIC CARDS ROW               */}
+      {/* ─────────────────────────────── */}
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mt-10">
 
-      {/* ------------------------------------------- */}
-      {/* EXISTING DASHBOARD CARDS                    */}
-      {/* ------------------------------------------- */}
-
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
-        
         {/* Active Applications */}
         <div className="bg-white p-5 rounded-xl shadow">
           <h3 className="text-lg font-semibold text-frog-900">
@@ -109,19 +107,49 @@ export default function DashboardView({
           <p className="text-3xl font-bold text-frog-800">{stats.interviews}</p>
         </div>
 
-        {/* Pending Actions */}
+        {/* Research Targets */}
         <div className="bg-white p-5 rounded-xl shadow">
           <h3 className="text-lg font-semibold text-frog-900">
-            Pending Actions
+            Research Targets
+          </h3>
+          <p className="text-3xl font-bold text-frog-800">{stats.research}</p>
+        </div>
+
+        {/* Action Items */}
+        <div className="bg-white p-5 rounded-xl shadow">
+          <h3 className="text-lg font-semibold text-frog-900">
+            Action Items
           </h3>
           <p className="text-3xl font-bold text-frog-800">{stats.actions}</p>
         </div>
+      </div>
+
+      {/* ─────────────────────────────── */}
+      {/* ACTION BUTTONS ROW              */}
+      {/* ─────────────────────────────── */}
+      <div className="flex gap-4 mt-6">
+
+        <button
+          onClick={onAddApplication}
+          className="px-6 py-3 rounded-lg bg-frog-200 text-black font-semibold shadow hover:bg-frog-300 transition"
+        >
+          + Add Job Application
+        </button>
+
+        <button
+          onClick={onAddResearch}
+          className="px-6 py-3 rounded-lg bg-frog-200 text-black font-semibold shadow hover:bg-frog-300 transition"
+        >
+          + Add Research Target
+        </button>
 
       </div>
 
-      {/* ADD YOUR EXISTING DASHBOARD CONTENT BELOW */}
+      {/* ─────────────────────────────── */}
+      {/* EMAIL SETUP CARD (BOTTOM)       */}
+      {/* ─────────────────────────────── */}
+      <EmailSetupCard />
       
     </div>
   );
 }
-
