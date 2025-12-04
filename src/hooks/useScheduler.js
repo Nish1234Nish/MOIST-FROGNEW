@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { load, save } from "../services/storage";
+import { load, save } from "../service/storage";
 import {
   loadEmailConfig,
   buildDailyHtml,
