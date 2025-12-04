@@ -9,7 +9,7 @@ import SettingsView from "./components/SettingsView";
 import {
   save as saveStorage,
   load as loadStorage,
-} from "./services/storage";
+} from "./service/storage";
 import { useScheduler } from "./hooks/useScheduler";
 
 const TAGLINES = [
