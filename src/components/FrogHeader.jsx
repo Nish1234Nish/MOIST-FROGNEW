@@ -1,4 +1,4 @@
-import FrogLogo from "/logo-frog.png";   // ← CORRECT for Vite
+import FrogLogo from "/logo-frog.PNG";   // ← CORRECT for Vite
 import React from "react";
 
 
