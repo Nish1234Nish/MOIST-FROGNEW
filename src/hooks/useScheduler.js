@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
-import { load, save } from "../service/storage";
+import { load, save } from "../service/storage";   // ⬅️ correct
 import {
   loadEmailConfig,
   buildDailyHtml,
   buildWeeklyHtml,
   sendEmail,
-} from "../services/email";
+} from "../service/email";                          // ⬅️ FIXED HERE
 
 const getTodayKey = (d) =>
   `${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`;
