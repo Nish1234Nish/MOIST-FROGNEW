@@ -1,3 +1,4 @@
+import FrogLogo from "/logo-frog.png";   // ← CORRECT for Vite
 import React from "react";
 import logo from "/logo-frog.png";
 
