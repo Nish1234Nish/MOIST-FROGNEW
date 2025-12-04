@@ -1,5 +1,6 @@
 import React from "react";
-import FrogLogo from "../assets/logo-frog.png";
+import logo from "/logo-frog.png";
+
 
 export default function FrogHeader({
   frogName,
