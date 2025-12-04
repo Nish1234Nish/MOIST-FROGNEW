@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { load, save } from "../services/storage";
+import { load, save } from "../service/storage";
 
 export default function SettingsView({
   frogName,
