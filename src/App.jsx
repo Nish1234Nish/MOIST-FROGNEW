@@ -44,6 +44,16 @@ function ContactAdder({ onSave }) {
   const [role, setRole] = useState("");
   const [email, setEmail] = useState("");
 
+function openAddJob() {
+  setAddType("job");
+  setShowAddModal(true);
+}
+
+function openAddResearch() {
+  setAddType("research");
+  setShowAddModal(true);
+}
+
   return (
     <div className="flex flex-wrap gap-2 mt-2">
       <input
