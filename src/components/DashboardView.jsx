@@ -1,9 +1,11 @@
 import React from "react";
 import FrogHeader from "../components/FrogHeader";
 
-// -----------------------------------------------
-// EMAIL SETUP CARD COMPONENT
-// -----------------------------------------------
+//
+// ───────────────────────────────────────────────
+// EMAIL SETUP CARD
+// ───────────────────────────────────────────────
+//
 function EmailSetupCard() {
   return (
     <div className="bg-white p-5 rounded-xl shadow border border-gray-200 mb-6">
@@ -58,9 +60,11 @@ function EmailSetupCard() {
   );
 }
 
-// -----------------------------------------------
+//
+// ───────────────────────────────────────────────
 // MAIN DASHBOARD VIEW COMPONENT
-// -----------------------------------------------
+// ───────────────────────────────────────────────
+//
 export default function DashboardView({
   frogName,
   tagline,
@@ -69,6 +73,9 @@ export default function DashboardView({
   interviews,
   ...props
 }) {
+  // Prevent crash if stats is undefined
+  stats = stats || { active: 0, interviews: 0, actions: 0 };
+
   return (
     <div className="p-6">
 
@@ -81,12 +88,12 @@ export default function DashboardView({
       </div>
 
       {/* ------------------------------------------- */}
-      {/* BELOW THIS IS YOUR EXISTING DASHBOARD UI     */}
-      {/* KEEP ALL YOUR EXISTING CONTENT UNCHANGED     */}
+      {/* EXISTING DASHBOARD CARDS                    */}
       {/* ------------------------------------------- */}
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
-        {/* Example Dashboard Cards - yours may differ */}
+        
+        {/* Active Applications */}
         <div className="bg-white p-5 rounded-xl shadow">
           <h3 className="text-lg font-semibold text-frog-900">
             Active Applications
@@ -94,6 +101,7 @@ export default function DashboardView({
           <p className="text-3xl font-bold text-frog-800">{stats.active}</p>
         </div>
 
+        {/* Interviews This Week */}
         <div className="bg-white p-5 rounded-xl shadow">
           <h3 className="text-lg font-semibold text-frog-900">
             Interviews This Week
@@ -101,15 +109,18 @@ export default function DashboardView({
           <p className="text-3xl font-bold text-frog-800">{stats.interviews}</p>
         </div>
 
+        {/* Pending Actions */}
         <div className="bg-white p-5 rounded-xl shadow">
           <h3 className="text-lg font-semibold text-frog-900">
             Pending Actions
           </h3>
           <p className="text-3xl font-bold text-frog-800">{stats.actions}</p>
         </div>
+
       </div>
 
-      {/* You can leave all your other sections intact */}
+      {/* ADD YOUR EXISTING DASHBOARD CONTENT BELOW */}
+      
     </div>
   );
 }
