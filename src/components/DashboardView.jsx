@@ -51,10 +51,7 @@ export default function DashboardView({
 
   return (
     <div className="p-6">
-
-      {/* HEADER */}
-      <FrogHeader frogName={frogName} tagline={tagline} />
-
+     
       {/* METRIC CARDS */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mt-10">
 
