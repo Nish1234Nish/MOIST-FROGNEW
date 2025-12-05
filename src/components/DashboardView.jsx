@@ -80,14 +80,14 @@ export default function DashboardView({
       {/* ACTION BUTTONS */}
       <div className="flex gap-4 mt-6">
         <button
-          onClick={openAddJob}
+          onClick={onAddJob}
           className="px-6 py-3 rounded-lg bg-frog-200 text-black font-semibold shadow hover:bg-frog-300"
         >
           + Add Job Application
         </button>
 
         <button
-          onClick={openAddResearch}
+          onClick={onAddResearch}
           className="px-6 py-3 rounded-lg bg-frog-200 text-black font-semibold shadow hover:bg-frog-300"
         >
           + Add Research Target
